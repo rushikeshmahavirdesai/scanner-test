@@ -14,7 +14,7 @@ const audio = new Audio("/beep.mp3");
 const onLoaded = () => (data.loading = false);
 
 const onDecode = async (text) => {
-  if (data.isAdding) return false;
+  // if (data.isAdding) return false;
   alert("text.codeResult.code", text.codeResult.code);
   text.codeResult.code;
   data.isAdding = true;
