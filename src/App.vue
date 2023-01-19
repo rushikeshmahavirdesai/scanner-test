@@ -1,29 +1,38 @@
 <template>
-  <QuoggaReader @onDetected="onDecode" />
-  <!-- <StreamBarcodeReader v-if="cart.mobileScanner" :busy="data.isAdding" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader> -->
+  <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+  <h2>The decoded value in QR/barcode is</h2>
+  <h2>{{ decodedText }}</h2>
+
+  <p class="information">
+    <strong>Github:</strong>
+    <a href="https://github.com/olefirenko/vue-barcode-reader" target="_blank"> https://github.com/olefirenko/vue-barcode-reader</a>
+  </p>
+  <p>
+    <strong>NPM:</strong>
+    <a href="https://www.npmjs.com/package/vue-barcode-reader" target="_blank"> https://www.npmjs.com/package/vue-barcode-reader</a>
+  </p>
+  <p>
+    Check <strong>vue-barcode-reader</strong> library in production at
+    <a href="https://parceltrackingapp.com/en" target="_blank">ParcelTrackingApp.com</a>
+  </p>
 </template>
-
 <script setup>
-import { ref, reactive } from "vue";
-import StreamBarcodeReader from "./components/StreamBarcodeReader.vue";
-import QuoggaReader from "./components/QuoggaReader.vue";
-
-const data = reactive({ loading: true, isAdding: false });
-const audio = new Audio("/beep.mp3");
-
-const onLoaded = () => (data.loading = false);
-
-const onDecode = async (text) => {
-  // if (data.isAdding) return false;
-  alert("text.codeResult.code", text.codeResult.code);
-  text.codeResult.code;
-  data.isAdding = true;
-
-  data.isAdding = false;
+import { ref } from "vue";
+import { StreamBarcodeReader } from "vue-barcode-reader";
+const decodedText = ref("");
+const onLoaded = () => {
+  alert("loaded");
+};
+const onDecode = (text) => {
+  alert(text);
+  decodedText.value = text;
 };
 </script>
 
 <style scoped>
+a {
+  color: #42b983;
+}
 .information {
   margin-top: 100px;
 }

@@ -11,7 +11,8 @@
     "@zxing/library": "^0.19.1",
     "html5-qrcode": "^2.3.4",
     "quagga": "^0.12.1",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue-barcode-reader": "^1.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
