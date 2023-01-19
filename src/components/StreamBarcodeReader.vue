@@ -14,6 +14,13 @@ import { BrowserMultiFormatReader, Exception } from "@zxing/library";
 export default {
   name: "stream-barcode-reader",
 
+  props: {
+    busy: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
   data() {
     return {
       isLoading: true,
@@ -29,7 +36,7 @@ export default {
     }
 
     this.start();
-    this.$refs.scanner.oncanplay = (event) => {
+    this.$refs.scanner.oncanplay = () => {
       this.isLoading = false;
       this.$emit("loaded");
     };
@@ -42,10 +49,7 @@ export default {
   methods: {
     start() {
       this.codeReader.decodeFromVideoDevice(undefined, this.$refs.scanner, (result, err) => {
-        if (result) {
-          this.$emit("decode", result.text);
-          this.$emit("result", result);
-        }
+        if (result && !this.busy) this.$emit("decode", result.text);
       });
     },
   },

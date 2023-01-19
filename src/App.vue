@@ -1,6 +1,6 @@
 <template>
   <!-- <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader> -->
-  <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+  <StreamBarcodeReader @decode="onDecode" :busy="data.isAdding" @loaded="onLoaded"></StreamBarcodeReader>
   <h2>The decoded value in QR/barcode is</h2>
   <h2>{{ decodedText }}</h2>
 
@@ -18,15 +18,24 @@
   </p>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import StreamBarcodeReader from "./components/StreamBarcodeReader.vue";
-const decodedText = ref("");
+
+const data = reactive({ loading: true, isAdding: false });
+
 const onLoaded = () => {
-  alert("loaded new");
+  data.loading = false;
+  alert("loaded new 2");
 };
-const onDecode = (text) => {
-  alert(text);
-  decodedText.value = text;
+
+const onDecode = async (text) => {
+  if (data.isAdding) return false;
+  const product = "ddddd";
+  data.isAdding = true;
+  if (product) {
+    alert("text.codeResult", text.codeResult);
+  }
+  data.isAdding = false;
 };
 </script>
 
