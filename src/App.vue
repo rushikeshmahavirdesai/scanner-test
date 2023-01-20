@@ -8,7 +8,7 @@
 import { ref, reactive } from "vue";
 import StreamBarcodeReader from "./components/StreamBarcodeReader.vue";
 import QuoggaReader from "./components/QuoggaReader.vue";
-const data = reactive({ loading: true, isAdding: false, barcodeText });
+const data = reactive({ loading: true, isAdding: false, barcodeText: null });
 
 const onLoaded = () => {
   data.loading = false;
