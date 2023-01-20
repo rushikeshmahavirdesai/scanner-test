@@ -1,9 +1,8 @@
 <template>
   <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
   <!-- <StreamBarcodeReader @decode="onDecode" :busy="data.isAdding" @loaded="onLoaded"></StreamBarcodeReader> -->
-  <QuoggaReader @onDetected="onDecode" />
+  <!-- <QuoggaReader @onDetected="onDecode" /> -->
   <h2>The decoded value in QR/barcode is</h2>
-  <h2>{{ decodedText }}</h2>
 </template>
 <script setup>
 import { ref, reactive } from "vue";
@@ -17,13 +16,7 @@ const onLoaded = () => {
 };
 
 const onDecode = async (text) => {
-  if (data.isAdding) return false;
-  const product = "ddddd";
-  data.isAdding = true;
-  if (product) {
-    alert("text.codeResult", text.codeResult.code);
-  }
-  data.isAdding = false;
+  alert("text.codeResult", text.codeResult.code);
 };
 </script>
 
