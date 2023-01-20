@@ -16,7 +16,7 @@ const onLoaded = () => {
 };
 
 const onDecode = async (text) => {
-  alert("text.codeResult", text.codeResult.code);
+  alert("text.codeResult", text);
 };
 </script>
 
