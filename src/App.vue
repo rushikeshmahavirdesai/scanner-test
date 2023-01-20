@@ -16,6 +16,7 @@ const onLoaded = () => {
 };
 
 const onDecode = async (text) => {
+  data.barcodeText = text;
   alert("text.codeResult", text);
 };
 </script>
