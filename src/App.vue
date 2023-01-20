@@ -2,7 +2,7 @@
   <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
   <!-- <StreamBarcodeReader @decode="onDecode" :busy="data.isAdding" @loaded="onLoaded"></StreamBarcodeReader> -->
   <!-- <QuoggaReader @onDetected="onDecode" /> -->
-  <textarea>{{ data.barcodeText }}s</textarea>
+  <textarea>{{ data.barcodeText }}</textarea>
 </template>
 <script setup>
 import { ref, reactive } from "vue";
