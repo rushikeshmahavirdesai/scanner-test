@@ -2,13 +2,13 @@
   <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
   <!-- <StreamBarcodeReader @decode="onDecode" :busy="data.isAdding" @loaded="onLoaded"></StreamBarcodeReader> -->
   <!-- <QuoggaReader @onDetected="onDecode" /> -->
-  <h2>The decoded value in QR/barcode is</h2>
+  <textarea>{{ data.barcodeText }}s</textarea>
 </template>
 <script setup>
 import { ref, reactive } from "vue";
 import StreamBarcodeReader from "./components/StreamBarcodeReader.vue";
 import QuoggaReader from "./components/QuoggaReader.vue";
-const data = reactive({ loading: true, isAdding: false });
+const data = reactive({ loading: true, isAdding: false, barcodeText });
 
 const onLoaded = () => {
   data.loading = false;
